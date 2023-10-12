@@ -17,10 +17,10 @@ COPY ["dotnet-docker-webapi.csproj", "./"]
 RUN dotnet restore "dotnet-docker-webapi.csproj"
 COPY . .
 WORKDIR "/src/."
-# RUN dotnet build "dotnet-docker-webapi.csproj" -c $configuration -o /app/build
+#RUN dotnet build "dotnet-docker-webapi.csproj" -c $configuration -o /app/build
 
-FROM build AS publish
-ARG configuration=Release
+#FROM build AS publish
+#ARG configuration=Release
 RUN dotnet publish "dotnet-docker-webapi.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
