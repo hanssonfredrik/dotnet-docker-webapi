@@ -19,8 +19,8 @@ dotnet run
 You can build and run the sample in Docker using the following commands. The instructions assume that you are in the root of the repository.
 
 ```console
-docker image build -t dotnet-docker-web:latest .
-docker run -dp 8000:80 --name dotnet-docker-web-container dotnet-docker-web:latest
+docker image build -t dotnet-docker-webapi:latest .
+docker run -dp 8000:80 --name dotnet-docker-webapi-container dotnet-docker-webapi:latest
 ```
 
 ## Build and run the sample with Divio
