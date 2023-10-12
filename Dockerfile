@@ -3,6 +3,12 @@ WORKDIR /app
 EXPOSE 80
 
 ENV ASPNETCORE_URLS=http://+:80 
+ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
+# Divio
+# --------------------
+ENV PORT=80
+ENV HOST=0.0.0.0
+ENV BROWSER='none'
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-dotnet-configure-containers
