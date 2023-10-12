@@ -1,0 +1,9 @@
+services:
+  dotnetdockerwebapi:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: dotnetdockerwebapi
+    ports:
+    - 80:80
+version: '3.4'
