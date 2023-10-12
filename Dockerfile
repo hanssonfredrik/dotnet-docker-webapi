@@ -2,14 +2,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
 
-# ENV ASPNETCORE_URLS=http://+:80 
-ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
-# Divio
-# --------------------
-ENV PORT=80
-ENV HOST=0.0.0.0
-ENV BROWSER='none'
-
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-dotnet-configure-containers
 RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
@@ -31,4 +23,13 @@ RUN dotnet publish "dotnet-docker-webapi.csproj" -c $configuration -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+ENV ASPNETCORE_URLS=http://+:80 
+ENV DOTNET_HOSTBUILDER__RELOADCONFIGONCHANGE=false
+# Divio
+# --------------------
+ENV PORT=80
+ENV HOST=0.0.0.0
+ENV BROWSER='none'
+
 ENTRYPOINT ["dotnet", "dotnet-docker-webapi.dll"]
