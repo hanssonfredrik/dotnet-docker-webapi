@@ -15,8 +15,8 @@ ARG configuration=Release
 WORKDIR /src
 COPY ["dotnet-docker-webapi.csproj", "./"]
 RUN dotnet restore "dotnet-docker-webapi.csproj"
-#COPY . .
-#WORKDIR "/src/."
+COPY . .
+WORKDIR "/src/."
 #RUN dotnet build "dotnet-docker-webapi.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
